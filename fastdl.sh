@@ -15,7 +15,7 @@ for i in $(find garrysmod/addons); do
     # Check if path is not a directory and is not part of lua, gamemodes or already compressed
     if [[ ! -d "$i" && "$i" != *"lua/"* && "$i" != *"gamemodes/"* && "$i" != *".bz2"* ]]; then
         # Add to resources.lua
-        if [ "$i" != "maps/"* ]; then
+        if [ ${i: -4} != ".bsp" ]; then
             echo "resource.AddFile(\"$RAWPATH\")" >> garrysmod/lua/autorun/server/resources.lua
         fi
         
